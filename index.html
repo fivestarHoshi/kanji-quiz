@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>漢字テスト対策</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif; background: #f5f5f5; color: #333; min-height: 100dvh; }
+
+/* Top Screen */
+.screen { display: none; padding: 20px; max-width: 480px; margin: 0 auto; }
+.screen.active { display: block; }
+
+h1 { font-size: 1.5rem; text-align: center; margin: 20px 0; }
+h2 { font-size: 1.2rem; margin-bottom: 16px; }
+
+.menu-btn {
+  display: block; width: 100%; padding: 18px; margin: 12px 0;
+  font-size: 1.1rem; border: none; border-radius: 12px;
+  cursor: pointer; font-weight: bold;
+}
+.menu-btn.primary { background: #4A90D9; color: white; }
+.menu-btn.secondary { background: #E8E8E8; color: #333; }
+.menu-btn.warn { background: #D94A4A; color: white; }
+.menu-btn:active { opacity: 0.8; }
+
+/* Quiz Screen */
+.progress { text-align: center; color: #888; margin-bottom: 12px; font-size: 0.9rem; }
+.quiz-card {
+  background: white; border-radius: 16px; padding: 32px 24px;
+  text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+.quiz-sentence { font-size: 1.3rem; line-height: 2; margin-bottom: 8px; }
+.quiz-reading { font-size: 2rem; font-weight: bold; color: #4A90D9; margin: 16px 0; }
+.quiz-hint { font-size: 0.85rem; color: #999; }
+
+.btn-group { display: flex; gap: 12px; margin: 16px 0; }
+.btn-group button {
+  flex: 1; padding: 16px; font-size: 1.1rem; border: none;
+  border-radius: 12px; cursor: pointer; font-weight: bold;
+}
+.btn-correct { background: #4CAF50; color: white; }
+.btn-wrong { background: #E53935; color: white; }
+.btn-correct:active, .btn-wrong:active { opacity: 0.8; }
+
+.btn-show-answer {
+  display: block; width: 100%; padding: 16px; font-size: 1.1rem;
+  border: 2px solid #4A90D9; background: white; color: #4A90D9;
+  border-radius: 12px; cursor: pointer; font-weight: bold;
+}
+.btn-show-answer:active { background: #f0f6ff; }
+
+/* Answer Display */
+.answer-display {
+  background: #FFFDE7; border-radius: 12px; padding: 20px;
+  text-align: center; margin: 16px 0;
+}
+.answer-word { font-size: 2.2rem; font-weight: bold; }
+.answer-word .kanji-part { color: #333; }
+.answer-word .okurigana-part { color: #E53935; border-bottom: 2px solid #E53935; }
+.answer-sentence { font-size: 1rem; color: #666; margin-top: 8px; }
+
+/* Result Screen */
+.result-card {
+  background: white; border-radius: 16px; padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 16px;
+}
+.result-score { font-size: 3rem; font-weight: bold; text-align: center; color: #4A90D9; }
+.result-score span { font-size: 1rem; color: #888; }
+.result-bar { height: 8px; background: #eee; border-radius: 4px; margin: 16px 0; overflow: hidden; }
+.result-bar-fill { height: 100%; background: #4CAF50; border-radius: 4px; transition: width 0.5s; }
+
+.weak-list { margin-top: 16px; }
+.weak-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid #eee; font-size: 1rem;
+}
+.weak-item:last-child { border-bottom: none; }
+.weak-kanji { font-size: 1.4rem; font-weight: bold; }
+.weak-reading { color: #888; }
+
+/* Weak List Screen */
+.weak-empty { text-align: center; color: #999; padding: 40px 0; }
+.weak-summary { text-align: center; color: #888; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+
+<!-- Top Screen -->
+<div id="top-screen" class="screen active">
+  <h1>漢字テスト対策<br><small style="font-size:0.7em;color:#888">小学3年生 200字</small></h1>
+  <button class="menu-btn primary" onclick="startQuiz('all')">全問テスト（200問）</button>
+  <button class="menu-btn secondary" onclick="startQuiz('weak')" id="btn-weak-quiz">苦手だけテスト（<span id="weak-count">0</span>問）</button>
+  <button class="menu-btn secondary" onclick="showWeakList()">苦手漢字一覧</button>
+  <button class="menu-btn secondary" onclick="startQuiz('unseen')">未出題パターン優先</button>
+  <div style="margin-top:24px;text-align:center;color:#aaa;font-size:0.8rem;">
+    <span id="stats-line"></span>
+  </div>
+</div>
+
+<!-- Quiz Screen -->
+<div id="quiz-screen" class="screen">
+  <div class="progress" id="quiz-progress"></div>
+  <div class="quiz-card">
+    <div class="quiz-sentence" id="quiz-sentence"></div>
+    <div class="quiz-reading" id="quiz-reading"></div>
+    <div class="quiz-hint" id="quiz-hint"></div>
+  </div>
+  <div id="quiz-before-answer">
+    <button class="btn-show-answer" onclick="showAnswer()">こたえを見る</button>
+  </div>
+  <div id="quiz-after-answer" style="display:none;">
+    <div class="answer-display">
+      <div class="answer-word" id="answer-word"></div>
+      <div class="answer-sentence" id="answer-sentence"></div>
+    </div>
+    <div class="btn-group">
+      <button class="btn-correct" onclick="answer(true)">できた</button>
+      <button class="btn-wrong" onclick="answer(false)">できなかった</button>
+    </div>
+  </div>
+  <button class="menu-btn secondary" onclick="endQuizEarly()" style="margin-top:12px;font-size:0.9rem;">ここまでで終わりにする</button>
+</div>
+
+<!-- Result Screen -->
+<div id="result-screen" class="screen">
+  <h2 style="text-align:center;">テスト結果</h2>
+  <div class="result-card">
+    <div class="result-score"><span id="result-correct">0</span> <span>/ <span id="result-total">0</span>問</span></div>
+    <div class="result-bar"><div class="result-bar-fill" id="result-bar-fill"></div></div>
+  </div>
+  <div class="result-card">
+    <h2>できなかった漢字</h2>
+    <div id="result-wrong-list"></div>
+  </div>
+  <button class="menu-btn primary" onclick="showScreen('top-screen')">もどる</button>
+</div>
+
+<!-- Weak List Screen -->
+<div id="weak-screen" class="screen">
+  <h2>苦手漢字一覧</h2>
+  <div class="weak-summary" id="weak-summary"></div>
+  <div class="result-card" id="weak-list-container"></div>
+  <button class="menu-btn secondary" onclick="showScreen('top-screen')">もどる</button>
+  <button class="menu-btn warn" onclick="resetData()" style="margin-top:20px;font-size:0.9rem;">データをリセット</button>
+</div>
+
+<script src="kanji_grade3.js"></script>
+<script>
+let kanjiData = KANJI_DATA;
+let quizQueue = [];
+let currentIndex = 0;
+let currentPattern = null;
+let sessionResults = [];
+let history = {};
+
+function init() {
+  history = JSON.parse(localStorage.getItem('kanjiHistory') || '{}');
+  updateTopScreen();
+}
+
+function saveHistory() {
+  localStorage.setItem('kanjiHistory', JSON.stringify(history));
+}
+
+function getPatternKey(kanji, patternIdx) {
+  return `${kanji}_${patternIdx}`;
+}
+
+function getWeakPatterns() {
+  const weak = [];
+  for (const item of kanjiData) {
+    for (let i = 0; i < item.patterns.length; i++) {
+      const key = getPatternKey(item.kanji, i);
+      const h = history[key];
+      if (h && h.length >= 1) {
+        const recent = h.slice(-3);
+        const wrongCount = recent.filter(r => !r).length;
+        if (wrongCount >= 2 || (recent.length === 1 && !recent[0])) {
+          weak.push({ kanji: item.kanji, patternIdx: i, pattern: item.patterns[i] });
+        }
+      }
+    }
+  }
+  return weak;
+}
+
+function getUnseenPatterns() {
+  const unseen = [];
+  for (const item of kanjiData) {
+    for (let i = 0; i < item.patterns.length; i++) {
+      const key = getPatternKey(item.kanji, i);
+      if (!history[key] || history[key].length === 0) {
+        unseen.push({ kanji: item.kanji, patternIdx: i, pattern: item.patterns[i] });
+      }
+    }
+  }
+  return unseen;
+}
+
+function updateTopScreen() {
+  const weakCount = getWeakPatterns().length;
+  document.getElementById('weak-count').textContent = weakCount;
+  document.getElementById('btn-weak-quiz').disabled = weakCount === 0;
+
+  const totalPatterns = kanjiData.reduce((sum, item) => sum + item.patterns.length, 0);
+  const seenPatterns = Object.keys(history).filter(k => history[k] && history[k].length > 0).length;
+  document.getElementById('stats-line').textContent =
+    `パターン消化: ${seenPatterns} / ${totalPatterns} | 苦手: ${weakCount}`;
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function startQuiz(mode) {
+  quizQueue = [];
+  sessionResults = [];
+  currentIndex = 0;
+
+  if (mode === 'all') {
+    for (const item of kanjiData) {
+      // Pick one random pattern per kanji, prefer unseen
+      const unseenIdxs = [];
+      const allIdxs = [];
+      for (let i = 0; i < item.patterns.length; i++) {
+        allIdxs.push(i);
+        const key = getPatternKey(item.kanji, i);
+        if (!history[key] || history[key].length === 0) {
+          unseenIdxs.push(i);
+        }
+      }
+      const pool = unseenIdxs.length > 0 ? unseenIdxs : allIdxs;
+      const idx = pool[Math.floor(Math.random() * pool.length)];
+      quizQueue.push({ kanji: item.kanji, patternIdx: idx, pattern: item.patterns[idx] });
+    }
+    shuffle(quizQueue);
+  } else if (mode === 'weak') {
+    quizQueue = shuffle(getWeakPatterns());
+    if (quizQueue.length === 0) return;
+  } else if (mode === 'unseen') {
+    const unseen = getUnseenPatterns();
+    if (unseen.length === 0) {
+      // All seen: pick one random per kanji
+      for (const item of kanjiData) {
+        const idx = Math.floor(Math.random() * item.patterns.length);
+        quizQueue.push({ kanji: item.kanji, patternIdx: idx, pattern: item.patterns[idx] });
+      }
+      shuffle(quizQueue);
+    } else {
+      // Group unseen by kanji, pick one per kanji
+      const byKanji = {};
+      for (const u of unseen) {
+        if (!byKanji[u.kanji]) byKanji[u.kanji] = [];
+        byKanji[u.kanji].push(u);
+      }
+      for (const k of Object.keys(byKanji)) {
+        const arr = byKanji[k];
+        quizQueue.push(arr[Math.floor(Math.random() * arr.length)]);
+      }
+      shuffle(quizQueue);
+    }
+  }
+
+  showScreen('quiz-screen');
+  showQuestion();
+}
+
+function showQuestion() {
+  const q = quizQueue[currentIndex];
+  currentPattern = q;
+  const p = q.pattern;
+
+  document.getElementById('quiz-progress').textContent =
+    `${currentIndex + 1} / ${quizQueue.length}`;
+
+  // Build sentence with reading highlighted
+  const sentence = p.sentence.replace(p.word, '【' + p.reading + '】');
+  document.getElementById('quiz-sentence').textContent = sentence;
+  document.getElementById('quiz-reading').textContent = '';
+
+  if (p.okurigana) {
+    document.getElementById('quiz-hint').textContent = '※送り仮名に注意';
+  } else {
+    document.getElementById('quiz-hint').textContent = '';
+  }
+
+  document.getElementById('quiz-before-answer').style.display = 'block';
+  document.getElementById('quiz-after-answer').style.display = 'none';
+}
+
+function showAnswer() {
+  const p = currentPattern.pattern;
+
+  // Build answer with okurigana highlighted
+  let answerHTML = '';
+  if (p.okurigana) {
+    const kanjiPart = p.word.slice(0, p.word.length - p.okurigana.length);
+    answerHTML = `<span class="kanji-part">${kanjiPart}</span><span class="okurigana-part">${p.okurigana}</span>`;
+  } else {
+    answerHTML = `<span class="kanji-part">${p.word}</span>`;
+  }
+  document.getElementById('answer-word').innerHTML = answerHTML;
+  document.getElementById('answer-sentence').textContent = p.sentence;
+
+  document.getElementById('quiz-before-answer').style.display = 'none';
+  document.getElementById('quiz-after-answer').style.display = 'block';
+}
+
+function answer(correct) {
+  const key = getPatternKey(currentPattern.kanji, currentPattern.patternIdx);
+  if (!history[key]) history[key] = [];
+  history[key].push(correct);
+  // Keep only last 5
+  if (history[key].length > 5) history[key] = history[key].slice(-5);
+  saveHistory();
+
+  sessionResults.push({
+    kanji: currentPattern.kanji,
+    pattern: currentPattern.pattern,
+    correct: correct
+  });
+
+  currentIndex++;
+  if (currentIndex < quizQueue.length) {
+    showQuestion();
+  } else {
+    showResults();
+  }
+}
+
+function endQuizEarly() {
+  if (sessionResults.length === 0) {
+    showScreen('top-screen');
+    return;
+  }
+  showResults();
+}
+
+function showResults() {
+  const correct = sessionResults.filter(r => r.correct).length;
+  const total = sessionResults.length;
+  const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
+
+  document.getElementById('result-correct').textContent = correct;
+  document.getElementById('result-total').textContent = total;
+  document.getElementById('result-bar-fill').style.width = pct + '%';
+
+  const wrongList = sessionResults.filter(r => !r.correct);
+  const container = document.getElementById('result-wrong-list');
+  if (wrongList.length === 0) {
+    container.innerHTML = '<div class="weak-empty">全問正解！</div>';
+  } else {
+    container.innerHTML = wrongList.map(r => {
+      const p = r.pattern;
+      let wordDisplay = p.word;
+      if (p.okurigana) {
+        const kanjiPart = p.word.slice(0, p.word.length - p.okurigana.length);
+        wordDisplay = `${kanjiPart}<span style="color:#E53935">${p.okurigana}</span>`;
+      }
+      return `<div class="weak-item">
+        <span class="weak-kanji">${wordDisplay}</span>
+        <span class="weak-reading">${p.reading}</span>
+      </div>`;
+    }).join('');
+  }
+
+  updateTopScreen();
+  showScreen('result-screen');
+}
+
+function showWeakList() {
+  const weak = getWeakPatterns();
+  document.getElementById('weak-summary').textContent = `${weak.length}パターン`;
+
+  const container = document.getElementById('weak-list-container');
+  if (weak.length === 0) {
+    container.innerHTML = '<div class="weak-empty">苦手漢字はありません</div>';
+  } else {
+    container.innerHTML = weak.map(w => {
+      const p = w.pattern;
+      let wordDisplay = p.word;
+      if (p.okurigana) {
+        const kanjiPart = p.word.slice(0, p.word.length - p.okurigana.length);
+        wordDisplay = `${kanjiPart}<span style="color:#E53935">${p.okurigana}</span>`;
+      }
+      return `<div class="weak-item">
+        <span class="weak-kanji">${wordDisplay}</span>
+        <span class="weak-reading">${p.reading}　${p.sentence}</span>
+      </div>`;
+    }).join('');
+  }
+
+  showScreen('weak-screen');
+}
+
+function resetData() {
+  if (confirm('学習データをすべて削除しますか？')) {
+    history = {};
+    localStorage.removeItem('kanjiHistory');
+    updateTopScreen();
+    showScreen('top-screen');
+  }
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+init();
+</script>
+</body>
+</html>

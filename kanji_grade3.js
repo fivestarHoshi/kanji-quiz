@@ -1,0 +1,3588 @@
+const KANJI_DATA = [
+  {
+    "kanji": "詩",
+    "patterns": [
+      {
+        "sentence": "詩を作る。",
+        "word": "詩",
+        "reading": "し",
+        "okurigana": null
+      },
+      {
+        "sentence": "外国の詩人。",
+        "word": "詩人",
+        "reading": "しじん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "葉",
+    "patterns": [
+      {
+        "sentence": "木の葉がしげる。",
+        "word": "葉",
+        "reading": "は",
+        "okurigana": null
+      },
+      {
+        "sentence": "秋に落葉する。",
+        "word": "落葉",
+        "reading": "らくよう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "習",
+    "patterns": [
+      {
+        "sentence": "国語の学習。",
+        "word": "学習",
+        "reading": "がくしゅう",
+        "okurigana": null
+      },
+      {
+        "sentence": "ピアノを習う。",
+        "word": "習う",
+        "reading": "ならう",
+        "okurigana": "う"
+      }
+    ]
+  },
+  {
+    "kanji": "着",
+    "patterns": [
+      {
+        "sentence": "服を着用する。",
+        "word": "着用",
+        "reading": "ちゃくよう",
+        "okurigana": null
+      },
+      {
+        "sentence": "服を着る。",
+        "word": "着る",
+        "reading": "きる",
+        "okurigana": "る"
+      },
+      {
+        "sentence": "家に着く。",
+        "word": "着く",
+        "reading": "つく",
+        "okurigana": "く"
+      }
+    ]
+  },
+  {
+    "kanji": "始",
+    "patterns": [
+      {
+        "sentence": "開始の合図。",
+        "word": "開始",
+        "reading": "かいし",
+        "okurigana": null
+      },
+      {
+        "sentence": "工事を始める。",
+        "word": "始める",
+        "reading": "はじめる",
+        "okurigana": "める"
+      },
+      {
+        "sentence": "授業が始まる。",
+        "word": "始まる",
+        "reading": "はじまる",
+        "okurigana": "まる"
+      }
+    ]
+  },
+  {
+    "kanji": "進",
+    "patterns": [
+      {
+        "sentence": "前に進む。",
+        "word": "進む",
+        "reading": "すすむ",
+        "okurigana": "む"
+      },
+      {
+        "sentence": "元気に進める。",
+        "word": "進める",
+        "reading": "すすめる",
+        "okurigana": "める"
+      },
+      {
+        "sentence": "行進する。",
+        "word": "行進",
+        "reading": "こうしん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "動",
+    "patterns": [
+      {
+        "sentence": "日の活動。",
+        "word": "活動",
+        "reading": "かつどう",
+        "okurigana": null
+      },
+      {
+        "sentence": "バスが動く。",
+        "word": "動く",
+        "reading": "うごく",
+        "okurigana": "く"
+      },
+      {
+        "sentence": "体を動かす。",
+        "word": "動かす",
+        "reading": "うごかす",
+        "okurigana": "かす"
+      }
+    ]
+  },
+  {
+    "kanji": "深",
+    "patterns": [
+      {
+        "sentence": "深い海をもぐる。",
+        "word": "深い",
+        "reading": "ふかい",
+        "okurigana": "い"
+      },
+      {
+        "sentence": "秋が深まる。",
+        "word": "深まる",
+        "reading": "ふかまる",
+        "okurigana": "まる"
+      },
+      {
+        "sentence": "考えを深める。",
+        "word": "深める",
+        "reading": "ふかめる",
+        "okurigana": "める"
+      },
+      {
+        "sentence": "池の水深。",
+        "word": "水深",
+        "reading": "すいしん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "様",
+    "patterns": [
+      {
+        "sentence": "王様のくらし。",
+        "word": "王様",
+        "reading": "おうさま",
+        "okurigana": null
+      },
+      {
+        "sentence": "町の様子。",
+        "word": "様子",
+        "reading": "ようす",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "面",
+    "patterns": [
+      {
+        "sentence": "お話の場面。",
+        "word": "場面",
+        "reading": "ばめん",
+        "okurigana": null
+      },
+      {
+        "sentence": "地面をほる。",
+        "word": "地面",
+        "reading": "じめん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "館",
+    "patterns": [
+      {
+        "sentence": "図書館の本。",
+        "word": "図書館",
+        "reading": "としょかん",
+        "okurigana": null
+      },
+      {
+        "sentence": "古い館。",
+        "word": "館",
+        "reading": "やかた",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "号",
+    "patterns": [
+      {
+        "sentence": "記号を書く。",
+        "word": "記号",
+        "reading": "きごう",
+        "okurigana": null
+      },
+      {
+        "sentence": "家の電話番号。",
+        "word": "番号",
+        "reading": "ばんごう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "調",
+    "patterns": [
+      {
+        "sentence": "意味を調べる。",
+        "word": "調べる",
+        "reading": "しらべる",
+        "okurigana": "べる"
+      },
+      {
+        "sentence": "体の調子がよい。",
+        "word": "調子",
+        "reading": "ちょうし",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "使",
+    "patterns": [
+      {
+        "sentence": "はさみを使う。",
+        "word": "使う",
+        "reading": "つかう",
+        "okurigana": "う"
+      },
+      {
+        "sentence": "教室を使用する。",
+        "word": "使用",
+        "reading": "しよう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "問",
+    "patterns": [
+      {
+        "sentence": "しつ問に答える。",
+        "word": "問",
+        "reading": "もん",
+        "okurigana": null
+      },
+      {
+        "sentence": "問屋さん。",
+        "word": "問屋",
+        "reading": "とんや",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "意",
+    "patterns": [
+      {
+        "sentence": "意見を言う。",
+        "word": "意見",
+        "reading": "いけん",
+        "okurigana": null
+      },
+      {
+        "sentence": "遠足の用意。",
+        "word": "用意",
+        "reading": "ようい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "味",
+    "patterns": [
+      {
+        "sentence": "言葉の意味。",
+        "word": "意味",
+        "reading": "いみ",
+        "okurigana": null
+      },
+      {
+        "sentence": "パンを味わう。",
+        "word": "味わう",
+        "reading": "あじわう",
+        "okurigana": "わう"
+      }
+    ]
+  },
+  {
+    "kanji": "湖",
+    "patterns": [
+      {
+        "sentence": "大きな湖。",
+        "word": "湖",
+        "reading": "みずうみ",
+        "okurigana": null
+      },
+      {
+        "sentence": "湖上にかぶ船。",
+        "word": "湖上",
+        "reading": "こじょう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "漢",
+    "patterns": [
+      {
+        "sentence": "漢字を読む。",
+        "word": "漢字",
+        "reading": "かんじ",
+        "okurigana": null
+      },
+      {
+        "sentence": "漢数字で書く。",
+        "word": "漢数字",
+        "reading": "かんすうじ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "由",
+    "patterns": [
+      {
+        "sentence": "自由な時間。",
+        "word": "自由",
+        "reading": "じゆう",
+        "okurigana": null
+      },
+      {
+        "sentence": "地名の由来。",
+        "word": "由来",
+        "reading": "ゆらい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "温",
+    "patterns": [
+      {
+        "sentence": "温かいスープ。",
+        "word": "温かい",
+        "reading": "あたたかい",
+        "okurigana": "かい"
+      },
+      {
+        "sentence": "気温が上がる。",
+        "word": "気温",
+        "reading": "きおん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "酒",
+    "patterns": [
+      {
+        "sentence": "あま酒をのむ。",
+        "word": "酒",
+        "reading": "ざけ",
+        "okurigana": null
+      },
+      {
+        "sentence": "日本酒。",
+        "word": "日本酒",
+        "reading": "にほんしゅ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "題",
+    "patterns": [
+      {
+        "sentence": "算数の問題。",
+        "word": "問題",
+        "reading": "もんだい",
+        "okurigana": null
+      },
+      {
+        "sentence": "本の題名。",
+        "word": "題名",
+        "reading": "だいめい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "発",
+    "patterns": [
+      {
+        "sentence": "バスが発車する。",
+        "word": "発車",
+        "reading": "はっしゃ",
+        "okurigana": null
+      },
+      {
+        "sentence": "朝早く出発する。",
+        "word": "出発",
+        "reading": "しゅっぱつ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "章",
+    "patterns": [
+      {
+        "sentence": "長い文章を読む。",
+        "word": "文章",
+        "reading": "ぶんしょう",
+        "okurigana": null
+      },
+      {
+        "sentence": "物語の第一章。",
+        "word": "第一章",
+        "reading": "だいいっしょう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "平",
+    "patterns": [
+      {
+        "sentence": "平らな道。",
+        "word": "平ら",
+        "reading": "たいら",
+        "okurigana": "ら"
+      },
+      {
+        "sentence": "平等にわける。",
+        "word": "平等",
+        "reading": "びょうどう",
+        "okurigana": null
+      },
+      {
+        "sentence": "平気な顔。",
+        "word": "平気",
+        "reading": "へいき",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "決",
+    "patterns": [
+      {
+        "sentence": "当番を決める。",
+        "word": "決める",
+        "reading": "きめる",
+        "okurigana": "める"
+      },
+      {
+        "sentence": "決心をする。",
+        "word": "決心",
+        "reading": "けっしん",
+        "okurigana": null
+      },
+      {
+        "sentence": "決まりを守る。",
+        "word": "決まり",
+        "reading": "きまり",
+        "okurigana": "まり"
+      }
+    ]
+  },
+  {
+    "kanji": "事",
+    "patterns": [
+      {
+        "sentence": "いろいろな出来事。",
+        "word": "出来事",
+        "reading": "できごと",
+        "okurigana": null
+      },
+      {
+        "sentence": "仕事の時間。",
+        "word": "仕事",
+        "reading": "しごと",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "落",
+    "patterns": [
+      {
+        "sentence": "葉が落ちる。",
+        "word": "落ちる",
+        "reading": "おちる",
+        "okurigana": "ちる"
+      },
+      {
+        "sentence": "落書きをする。",
+        "word": "落書き",
+        "reading": "らくがき",
+        "okurigana": null
+      },
+      {
+        "sentence": "荷物を落とす。",
+        "word": "落とす",
+        "reading": "おとす",
+        "okurigana": "とす"
+      }
+    ]
+  },
+  {
+    "kanji": "相",
+    "patterns": [
+      {
+        "sentence": "相手につたえる。",
+        "word": "相手",
+        "reading": "あいて",
+        "okurigana": null
+      },
+      {
+        "sentence": "手相を見る。",
+        "word": "手相",
+        "reading": "てそう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "洋",
+    "patterns": [
+      {
+        "sentence": "洋風の家。",
+        "word": "洋風",
+        "reading": "ようふう",
+        "okurigana": null
+      },
+      {
+        "sentence": "洋食を作る。",
+        "word": "洋食",
+        "reading": "ようしょく",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "服",
+    "patterns": [
+      {
+        "sentence": "洋服を着る。",
+        "word": "洋服",
+        "reading": "ようふく",
+        "okurigana": null
+      },
+      {
+        "sentence": "服を買う。",
+        "word": "服",
+        "reading": "ふく",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "次",
+    "patterns": [
+      {
+        "sentence": "次の日曜日。",
+        "word": "次",
+        "reading": "つぎ",
+        "okurigana": null
+      },
+      {
+        "sentence": "電話をとり次ぐ。",
+        "word": "次ぐ",
+        "reading": "つぐ",
+        "okurigana": "ぐ"
+      },
+      {
+        "sentence": "次回のテスト。",
+        "word": "次回",
+        "reading": "じかい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "所",
+    "patterns": [
+      {
+        "sentence": "高い所に上がる。",
+        "word": "所",
+        "reading": "ところ",
+        "okurigana": null
+      },
+      {
+        "sentence": "しずかな場所。",
+        "word": "場所",
+        "reading": "ばしょ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "県",
+    "patterns": [
+      {
+        "sentence": "県立の図書館。",
+        "word": "県立",
+        "reading": "けんりつ",
+        "okurigana": null
+      },
+      {
+        "sentence": "県内にある学校。",
+        "word": "県内",
+        "reading": "けんない",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "有",
+    "patterns": [
+      {
+        "sentence": "有名な作家。",
+        "word": "有名",
+        "reading": "ゆうめい",
+        "okurigana": null
+      },
+      {
+        "sentence": "有り合わせの物。",
+        "word": "有り",
+        "reading": "あり",
+        "okurigana": "り"
+      }
+    ]
+  },
+  {
+    "kanji": "氷",
+    "patterns": [
+      {
+        "sentence": "つめたい氷。",
+        "word": "氷",
+        "reading": "こおり",
+        "okurigana": null
+      },
+      {
+        "sentence": "大きな氷山。",
+        "word": "氷山",
+        "reading": "ひょうざん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "秒",
+    "patterns": [
+      {
+        "sentence": "十秒で走る。",
+        "word": "秒",
+        "reading": "びょう",
+        "okurigana": null
+      },
+      {
+        "sentence": "とけいの秒しん。",
+        "word": "秒",
+        "reading": "びょう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "農",
+    "patterns": [
+      {
+        "sentence": "農家の人。",
+        "word": "農家",
+        "reading": "のうか",
+        "okurigana": null
+      },
+      {
+        "sentence": "農園ではたらく。",
+        "word": "農園",
+        "reading": "のうえん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "仕",
+    "patterns": [
+      {
+        "sentence": "仕事をはじめる。",
+        "word": "仕事",
+        "reading": "しごと",
+        "okurigana": null
+      },
+      {
+        "sentence": "王に仕える。",
+        "word": "仕える",
+        "reading": "つかえる",
+        "okurigana": "える"
+      }
+    ]
+  },
+  {
+    "kanji": "球",
+    "patterns": [
+      {
+        "sentence": "野球のチーム。",
+        "word": "野球",
+        "reading": "やきゅう",
+        "okurigana": null
+      },
+      {
+        "sentence": "球をなげる。",
+        "word": "球",
+        "reading": "たま",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "局",
+    "patterns": [
+      {
+        "sentence": "ゆうびん局へ行く。",
+        "word": "局",
+        "reading": "きょく",
+        "okurigana": null
+      },
+      {
+        "sentence": "電話の市外局番。",
+        "word": "局番",
+        "reading": "きょくばん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "全",
+    "patterns": [
+      {
+        "sentence": "全国を旅する。",
+        "word": "全国",
+        "reading": "ぜんこく",
+        "okurigana": null
+      },
+      {
+        "sentence": "全て話す。",
+        "word": "全て",
+        "reading": "すべて",
+        "okurigana": "て"
+      }
+    ]
+  },
+  {
+    "kanji": "遊",
+    "patterns": [
+      {
+        "sentence": "友だちと遊ぶ。",
+        "word": "遊ぶ",
+        "reading": "あそぶ",
+        "okurigana": "ぶ"
+      },
+      {
+        "sentence": "遊園地に行く。",
+        "word": "遊園地",
+        "reading": "ゆうえんち",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "表",
+    "patterns": [
+      {
+        "sentence": "図に表す。",
+        "word": "表す",
+        "reading": "あらわす",
+        "okurigana": "す"
+      },
+      {
+        "sentence": "本の表紙。",
+        "word": "表紙",
+        "reading": "ひょうし",
+        "okurigana": null
+      },
+      {
+        "sentence": "表と裏。",
+        "word": "表",
+        "reading": "おもて",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "昔",
+    "patterns": [
+      {
+        "sentence": "昔のくらし。",
+        "word": "昔",
+        "reading": "むかし",
+        "okurigana": null
+      },
+      {
+        "sentence": "昔話を聞く。",
+        "word": "昔話",
+        "reading": "むかしばなし",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "世",
+    "patterns": [
+      {
+        "sentence": "犬の世話をする。",
+        "word": "世話",
+        "reading": "せわ",
+        "okurigana": null
+      },
+      {
+        "sentence": "二十世紀。",
+        "word": "世紀",
+        "reading": "せいき",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "界",
+    "patterns": [
+      {
+        "sentence": "世界地図を見る。",
+        "word": "世界",
+        "reading": "せかい",
+        "okurigana": null
+      },
+      {
+        "sentence": "世界の国。",
+        "word": "世界",
+        "reading": "せかい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "速",
+    "patterns": [
+      {
+        "sentence": "足が速い。",
+        "word": "速い",
+        "reading": "はやい",
+        "okurigana": "い"
+      },
+      {
+        "sentence": "速度をはかる。",
+        "word": "速度",
+        "reading": "そくど",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "横",
+    "patterns": [
+      {
+        "sentence": "横だん歩道をわたる。",
+        "word": "横だん歩道",
+        "reading": "おうだんほどう",
+        "okurigana": null
+      },
+      {
+        "sentence": "横を向く。",
+        "word": "横",
+        "reading": "よこ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "指",
+    "patterns": [
+      {
+        "sentence": "足の指。",
+        "word": "指",
+        "reading": "ゆび",
+        "okurigana": null
+      },
+      {
+        "sentence": "北を指す。",
+        "word": "指す",
+        "reading": "さす",
+        "okurigana": "す"
+      },
+      {
+        "sentence": "指名する。",
+        "word": "指名",
+        "reading": "しめい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "鉄",
+    "patterns": [
+      {
+        "sentence": "鉄ぼうで遊ぶ。",
+        "word": "鉄ぼう",
+        "reading": "てつぼう",
+        "okurigana": null
+      },
+      {
+        "sentence": "鉄道が通る。",
+        "word": "鉄道",
+        "reading": "てつどう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "安",
+    "patterns": [
+      {
+        "sentence": "ねだんが安い。",
+        "word": "安い",
+        "reading": "やすい",
+        "okurigana": "い"
+      },
+      {
+        "sentence": "ほっと安心する。",
+        "word": "安心",
+        "reading": "あんしん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "定",
+    "patterns": [
+      {
+        "sentence": "場所を定める。",
+        "word": "定める",
+        "reading": "さだめる",
+        "okurigana": "める"
+      },
+      {
+        "sentence": "日時を指定する。",
+        "word": "指定",
+        "reading": "してい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "運",
+    "patterns": [
+      {
+        "sentence": "運動場で遊ぶ。",
+        "word": "運動",
+        "reading": "うんどう",
+        "okurigana": null
+      },
+      {
+        "sentence": "つくえを運ぶ。",
+        "word": "運ぶ",
+        "reading": "はこぶ",
+        "okurigana": "ぶ"
+      }
+    ]
+  },
+  {
+    "kanji": "予",
+    "patterns": [
+      {
+        "sentence": "来週の予定。",
+        "word": "予定",
+        "reading": "よてい",
+        "okurigana": null
+      },
+      {
+        "sentence": "国語の予習をする。",
+        "word": "予習",
+        "reading": "よしゅう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "送",
+    "patterns": [
+      {
+        "sentence": "手紙を送る。",
+        "word": "送る",
+        "reading": "おくる",
+        "okurigana": "る"
+      },
+      {
+        "sentence": "はがきを発送する。",
+        "word": "発送",
+        "reading": "はっそう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "住",
+    "patterns": [
+      {
+        "sentence": "住所を書く。",
+        "word": "住所",
+        "reading": "じゅうしょ",
+        "okurigana": null
+      },
+      {
+        "sentence": "新しい町に住む。",
+        "word": "住む",
+        "reading": "すむ",
+        "okurigana": "む"
+      }
+    ]
+  },
+  {
+    "kanji": "具",
+    "patterns": [
+      {
+        "sentence": "道具を使う。",
+        "word": "道具",
+        "reading": "どうぐ",
+        "okurigana": null
+      },
+      {
+        "sentence": "青い絵の具。",
+        "word": "絵の具",
+        "reading": "えのぐ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "拾",
+    "patterns": [
+      {
+        "sentence": "くりを拾う。",
+        "word": "拾う",
+        "reading": "ひろう",
+        "okurigana": "う"
+      },
+      {
+        "sentence": "ごみ拾いをする。",
+        "word": "拾い",
+        "reading": "ひろい",
+        "okurigana": "い"
+      }
+    ]
+  },
+  {
+    "kanji": "向",
+    "patterns": [
+      {
+        "sentence": "学校へ向かう。",
+        "word": "向かう",
+        "reading": "むかう",
+        "okurigana": "かう"
+      },
+      {
+        "sentence": "右の方向。",
+        "word": "方向",
+        "reading": "ほうこう",
+        "okurigana": null
+      },
+      {
+        "sentence": "前を向く。",
+        "word": "向く",
+        "reading": "むく",
+        "okurigana": "く"
+      }
+    ]
+  },
+  {
+    "kanji": "坂",
+    "patterns": [
+      {
+        "sentence": "坂道を上る。",
+        "word": "坂道",
+        "reading": "さかみち",
+        "okurigana": null
+      },
+      {
+        "sentence": "きゅうな坂を下る。",
+        "word": "坂",
+        "reading": "さか",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "悲",
+    "patterns": [
+      {
+        "sentence": "悲しい話。",
+        "word": "悲しい",
+        "reading": "かなしい",
+        "okurigana": "しい"
+      },
+      {
+        "sentence": "悲鳴が聞こえる。",
+        "word": "悲鳴",
+        "reading": "ひめい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "緑",
+    "patterns": [
+      {
+        "sentence": "緑のしば。",
+        "word": "緑",
+        "reading": "みどり",
+        "okurigana": null
+      },
+      {
+        "sentence": "あつい緑茶。",
+        "word": "緑茶",
+        "reading": "りょくちゃ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "開",
+    "patterns": [
+      {
+        "sentence": "ドアを開ける。",
+        "word": "開ける",
+        "reading": "あける",
+        "okurigana": "ける"
+      },
+      {
+        "sentence": "本を開く。",
+        "word": "開く",
+        "reading": "ひらく",
+        "okurigana": "く"
+      },
+      {
+        "sentence": "開店する。",
+        "word": "開店",
+        "reading": "かいてん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "岸",
+    "patterns": [
+      {
+        "sentence": "海岸を歩く。",
+        "word": "海岸",
+        "reading": "かいがん",
+        "okurigana": null
+      },
+      {
+        "sentence": "船が岸に着く。",
+        "word": "岸",
+        "reading": "きし",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "路",
+    "patterns": [
+      {
+        "sentence": "広い道路を歩く。",
+        "word": "道路",
+        "reading": "どうろ",
+        "okurigana": null
+      },
+      {
+        "sentence": "家路につく。",
+        "word": "家路",
+        "reading": "いえじ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "感",
+    "patterns": [
+      {
+        "sentence": "とても感動する。",
+        "word": "感動",
+        "reading": "かんどう",
+        "okurigana": null
+      },
+      {
+        "sentence": "心に感じる。",
+        "word": "感じる",
+        "reading": "かんじる",
+        "okurigana": "じる"
+      }
+    ]
+  },
+  {
+    "kanji": "対",
+    "patterns": [
+      {
+        "sentence": "意見が対立する。",
+        "word": "対立",
+        "reading": "たいりつ",
+        "okurigana": null
+      },
+      {
+        "sentence": "五対三でかつ。",
+        "word": "対",
+        "reading": "たい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "区",
+    "patterns": [
+      {
+        "sentence": "となりの地区。",
+        "word": "地区",
+        "reading": "ちく",
+        "okurigana": null
+      },
+      {
+        "sentence": "二つに区切る。",
+        "word": "区切る",
+        "reading": "くぎる",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "陽",
+    "patterns": [
+      {
+        "sentence": "太陽がのぼる。",
+        "word": "太陽",
+        "reading": "たいよう",
+        "okurigana": null
+      },
+      {
+        "sentence": "陽気に歌う。",
+        "word": "陽気",
+        "reading": "ようき",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "整",
+    "patterns": [
+      {
+        "sentence": "たなを整える。",
+        "word": "整える",
+        "reading": "ととのえる",
+        "okurigana": "える"
+      },
+      {
+        "sentence": "文を整理する。",
+        "word": "整理",
+        "reading": "せいり",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "部",
+    "patterns": [
+      {
+        "sentence": "全部食べる。",
+        "word": "全部",
+        "reading": "ぜんぶ",
+        "okurigana": null
+      },
+      {
+        "sentence": "はじめの部分。",
+        "word": "部分",
+        "reading": "ぶぶん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "泳",
+    "patterns": [
+      {
+        "sentence": "プールで泳ぐ。",
+        "word": "泳ぐ",
+        "reading": "およぐ",
+        "okurigana": "ぐ"
+      },
+      {
+        "sentence": "水泳の練習。",
+        "word": "水泳",
+        "reading": "すいえい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "練",
+    "patterns": [
+      {
+        "sentence": "なわとびの練習。",
+        "word": "練習",
+        "reading": "れんしゅう",
+        "okurigana": null
+      },
+      {
+        "sentence": "計画を練る。",
+        "word": "練る",
+        "reading": "ねる",
+        "okurigana": "る"
+      }
+    ]
+  },
+  {
+    "kanji": "助",
+    "patterns": [
+      {
+        "sentence": "人を助ける。",
+        "word": "助ける",
+        "reading": "たすける",
+        "okurigana": "ける"
+      },
+      {
+        "sentence": "先生の助言。",
+        "word": "助言",
+        "reading": "じょげん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "童",
+    "patterns": [
+      {
+        "sentence": "童話を読む。",
+        "word": "童話",
+        "reading": "どうわ",
+        "okurigana": null
+      },
+      {
+        "sentence": "童よう歌を歌う。",
+        "word": "童よう",
+        "reading": "どうよう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "申",
+    "patterns": [
+      {
+        "sentence": "申しわけない。",
+        "word": "申し",
+        "reading": "もうし",
+        "okurigana": "し"
+      },
+      {
+        "sentence": "理由を申す。",
+        "word": "申す",
+        "reading": "もうす",
+        "okurigana": "す"
+      }
+    ]
+  },
+  {
+    "kanji": "品",
+    "patterns": [
+      {
+        "sentence": "品物を買う。",
+        "word": "品物",
+        "reading": "しなもの",
+        "okurigana": null
+      },
+      {
+        "sentence": "みんなの作品。",
+        "word": "作品",
+        "reading": "さくひん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "商",
+    "patterns": [
+      {
+        "sentence": "商店がならぶ。",
+        "word": "商店",
+        "reading": "しょうてん",
+        "okurigana": null
+      },
+      {
+        "sentence": "商売をはじめる。",
+        "word": "商売",
+        "reading": "しょうばい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "客",
+    "patterns": [
+      {
+        "sentence": "店のお客さん。",
+        "word": "客",
+        "reading": "きゃく",
+        "okurigana": null
+      },
+      {
+        "sentence": "船の客室。",
+        "word": "客室",
+        "reading": "きゃくしつ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "式",
+    "patterns": [
+      {
+        "sentence": "入学式の日。",
+        "word": "入学式",
+        "reading": "にゅうがくしき",
+        "okurigana": null
+      },
+      {
+        "sentence": "かけ算の式。",
+        "word": "式",
+        "reading": "しき",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "去",
+    "patterns": [
+      {
+        "sentence": "去年の夏休み。",
+        "word": "去年",
+        "reading": "きょねん",
+        "okurigana": null
+      },
+      {
+        "sentence": "過去の町を見る。",
+        "word": "過去",
+        "reading": "かこ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "倍",
+    "patterns": [
+      {
+        "sentence": "三倍にふえる。",
+        "word": "倍",
+        "reading": "ばい",
+        "okurigana": null
+      },
+      {
+        "sentence": "倍の人数になる。",
+        "word": "倍",
+        "reading": "ばい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "筆",
+    "patterns": [
+      {
+        "sentence": "筆で字を書く。",
+        "word": "筆",
+        "reading": "ふで",
+        "okurigana": null
+      },
+      {
+        "sentence": "毛筆で書く。",
+        "word": "毛筆",
+        "reading": "もうひつ",
+        "okurigana": null
+      },
+      {
+        "sentence": "絵筆を使う。",
+        "word": "絵筆",
+        "reading": "えふで",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "銀",
+    "patterns": [
+      {
+        "sentence": "銀行へ行く。",
+        "word": "銀行",
+        "reading": "ぎんこう",
+        "okurigana": null
+      },
+      {
+        "sentence": "銀メダルをとる。",
+        "word": "銀メダル",
+        "reading": "ぎんめだる",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "植",
+    "patterns": [
+      {
+        "sentence": "公園に木を植える。",
+        "word": "植える",
+        "reading": "うえる",
+        "okurigana": "える"
+      },
+      {
+        "sentence": "植物の花。",
+        "word": "植物",
+        "reading": "しょくぶつ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "集",
+    "patterns": [
+      {
+        "sentence": "広場に集まる。",
+        "word": "集まる",
+        "reading": "あつまる",
+        "okurigana": "まる"
+      },
+      {
+        "sentence": "切手を集める。",
+        "word": "集める",
+        "reading": "あつめる",
+        "okurigana": "める"
+      },
+      {
+        "sentence": "広場に集合する。",
+        "word": "集合",
+        "reading": "しゅうごう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "化",
+    "patterns": [
+      {
+        "sentence": "外国の文化。",
+        "word": "文化",
+        "reading": "ぶんか",
+        "okurigana": null
+      },
+      {
+        "sentence": "きつねが化ける。",
+        "word": "化ける",
+        "reading": "ばける",
+        "okurigana": "ける"
+      }
+    ]
+  },
+  {
+    "kanji": "死",
+    "patterns": [
+      {
+        "sentence": "虫が死ぬ。",
+        "word": "死ぬ",
+        "reading": "しぬ",
+        "okurigana": "ぬ"
+      },
+      {
+        "sentence": "ひっ死に走る。",
+        "word": "死",
+        "reading": "し",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "都",
+    "patterns": [
+      {
+        "sentence": "東京都に住む。",
+        "word": "都",
+        "reading": "と",
+        "okurigana": null
+      },
+      {
+        "sentence": "古い都。",
+        "word": "都",
+        "reading": "みやこ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "両",
+    "patterns": [
+      {
+        "sentence": "両手を広げる。",
+        "word": "両手",
+        "reading": "りょうて",
+        "okurigana": null
+      },
+      {
+        "sentence": "電車の車両。",
+        "word": "車両",
+        "reading": "しゃりょう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "負",
+    "patterns": [
+      {
+        "sentence": "大会で負ける。",
+        "word": "負ける",
+        "reading": "まける",
+        "okurigana": "ける"
+      },
+      {
+        "sentence": "勝負をする。",
+        "word": "勝負",
+        "reading": "しょうぶ",
+        "okurigana": null
+      },
+      {
+        "sentence": "きずを負う。",
+        "word": "負う",
+        "reading": "おう",
+        "okurigana": "う"
+      }
+    ]
+  },
+  {
+    "kanji": "係",
+    "patterns": [
+      {
+        "sentence": "係の仕事。",
+        "word": "係",
+        "reading": "かかり",
+        "okurigana": null
+      },
+      {
+        "sentence": "下の言葉に係る。",
+        "word": "係る",
+        "reading": "かかる",
+        "okurigana": "る"
+      },
+      {
+        "sentence": "関係をたもつ。",
+        "word": "関係",
+        "reading": "かんけい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "員",
+    "patterns": [
+      {
+        "sentence": "店員にたずねる。",
+        "word": "店員",
+        "reading": "てんいん",
+        "okurigana": null
+      },
+      {
+        "sentence": "全員が集まる。",
+        "word": "全員",
+        "reading": "ぜんいん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "祭",
+    "patterns": [
+      {
+        "sentence": "お祭りの日。",
+        "word": "祭り",
+        "reading": "まつり",
+        "okurigana": "り"
+      },
+      {
+        "sentence": "学校の文化祭。",
+        "word": "文化祭",
+        "reading": "ぶんかさい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "業",
+    "patterns": [
+      {
+        "sentence": "作業をおえる。",
+        "word": "作業",
+        "reading": "さぎょう",
+        "okurigana": null
+      },
+      {
+        "sentence": "店が休業する。",
+        "word": "休業",
+        "reading": "きゅうぎょう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "板",
+    "patterns": [
+      {
+        "sentence": "板を切る。",
+        "word": "板",
+        "reading": "いた",
+        "okurigana": null
+      },
+      {
+        "sentence": "黒板に書く。",
+        "word": "黒板",
+        "reading": "こくばん",
+        "okurigana": null
+      },
+      {
+        "sentence": "鉄板をやく。",
+        "word": "鉄板",
+        "reading": "てっぱん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "柱",
+    "patterns": [
+      {
+        "sentence": "家の太い柱。",
+        "word": "柱",
+        "reading": "はしら",
+        "okurigana": null
+      },
+      {
+        "sentence": "電柱を立てる。",
+        "word": "電柱",
+        "reading": "でんちゅう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "油",
+    "patterns": [
+      {
+        "sentence": "油であげる。",
+        "word": "油",
+        "reading": "あぶら",
+        "okurigana": null
+      },
+      {
+        "sentence": "石油ストーブ。",
+        "word": "石油",
+        "reading": "せきゆ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "港",
+    "patterns": [
+      {
+        "sentence": "船が港へ入る。",
+        "word": "港",
+        "reading": "みなと",
+        "okurigana": null
+      },
+      {
+        "sentence": "大きな空港。",
+        "word": "空港",
+        "reading": "くうこう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "薬",
+    "patterns": [
+      {
+        "sentence": "かぜ薬をのむ。",
+        "word": "薬",
+        "reading": "ぐすり",
+        "okurigana": null
+      },
+      {
+        "sentence": "薬局へ行く。",
+        "word": "薬局",
+        "reading": "やっきょく",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "笛",
+    "patterns": [
+      {
+        "sentence": "笛をふく。",
+        "word": "笛",
+        "reading": "ふえ",
+        "okurigana": null
+      },
+      {
+        "sentence": "汽笛が鳴る。",
+        "word": "汽笛",
+        "reading": "きてき",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "注",
+    "patterns": [
+      {
+        "sentence": "車に注意する。",
+        "word": "注意",
+        "reading": "ちゅうい",
+        "okurigana": null
+      },
+      {
+        "sentence": "水を注ぐ。",
+        "word": "注ぐ",
+        "reading": "そそぐ",
+        "okurigana": "ぐ"
+      }
+    ]
+  },
+  {
+    "kanji": "悪",
+    "patterns": [
+      {
+        "sentence": "天気が悪い。",
+        "word": "悪い",
+        "reading": "わるい",
+        "okurigana": "い"
+      },
+      {
+        "sentence": "悪人をつかまえる。",
+        "word": "悪人",
+        "reading": "あくにん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "者",
+    "patterns": [
+      {
+        "sentence": "物語の作者。",
+        "word": "作者",
+        "reading": "さくしゃ",
+        "okurigana": null
+      },
+      {
+        "sentence": "クラスの人気者。",
+        "word": "人気者",
+        "reading": "にんきもの",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "勝",
+    "patterns": [
+      {
+        "sentence": "試合に勝つ。",
+        "word": "勝つ",
+        "reading": "かつ",
+        "okurigana": "つ"
+      },
+      {
+        "sentence": "決勝に進む。",
+        "word": "決勝",
+        "reading": "けっしょう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "庫",
+    "patterns": [
+      {
+        "sentence": "金庫にしまう。",
+        "word": "金庫",
+        "reading": "きんこ",
+        "okurigana": null
+      },
+      {
+        "sentence": "学級文庫の本。",
+        "word": "文庫",
+        "reading": "ぶんこ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "波",
+    "patterns": [
+      {
+        "sentence": "おだやかな波。",
+        "word": "波",
+        "reading": "なみ",
+        "okurigana": null
+      },
+      {
+        "sentence": "テレビの電波。",
+        "word": "電波",
+        "reading": "でんぱ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "放",
+    "patterns": [
+      {
+        "sentence": "空に鳥を放す。",
+        "word": "放す",
+        "reading": "はなす",
+        "okurigana": "す"
+      },
+      {
+        "sentence": "ボールを放る。",
+        "word": "放る",
+        "reading": "ほうる",
+        "okurigana": "る"
+      },
+      {
+        "sentence": "放送する。",
+        "word": "放送",
+        "reading": "ほうそう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "勉",
+    "patterns": [
+      {
+        "sentence": "国語の勉強。",
+        "word": "勉強",
+        "reading": "べんきょう",
+        "okurigana": null
+      },
+      {
+        "sentence": "勉学にはげむ。",
+        "word": "勉学",
+        "reading": "べんがく",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "列",
+    "patterns": [
+      {
+        "sentence": "列車が走る。",
+        "word": "列車",
+        "reading": "れっしゃ",
+        "okurigana": null
+      },
+      {
+        "sentence": "一列にならぶ。",
+        "word": "列",
+        "reading": "れつ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "真",
+    "patterns": [
+      {
+        "sentence": "写真をとる。",
+        "word": "写真",
+        "reading": "しゃしん",
+        "okurigana": null
+      },
+      {
+        "sentence": "真っ白なシャツ。",
+        "word": "真っ白",
+        "reading": "まっしろ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "写",
+    "patterns": [
+      {
+        "sentence": "写真をとる。",
+        "word": "写真",
+        "reading": "しゃしん",
+        "okurigana": null
+      },
+      {
+        "sentence": "ノートに写す。",
+        "word": "写す",
+        "reading": "うつす",
+        "okurigana": "す"
+      }
+    ]
+  },
+  {
+    "kanji": "想",
+    "patterns": [
+      {
+        "sentence": "理想の社会。",
+        "word": "理想",
+        "reading": "りそう",
+        "okurigana": null
+      },
+      {
+        "sentence": "感想文を書く。",
+        "word": "感想",
+        "reading": "かんそう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "暑",
+    "patterns": [
+      {
+        "sentence": "暑い夏の日。",
+        "word": "暑い",
+        "reading": "あつい",
+        "okurigana": "い"
+      },
+      {
+        "sentence": "暑中みまいを出す。",
+        "word": "暑中",
+        "reading": "しょちゅう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "橋",
+    "patterns": [
+      {
+        "sentence": "川に橋をかける。",
+        "word": "橋",
+        "reading": "はし",
+        "okurigana": null
+      },
+      {
+        "sentence": "歩道橋をわたる。",
+        "word": "歩道橋",
+        "reading": "ほどうきょう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "暗",
+    "patterns": [
+      {
+        "sentence": "空が暗くなる。",
+        "word": "暗い",
+        "reading": "くらい",
+        "okurigana": "い"
+      },
+      {
+        "sentence": "数字を暗記する。",
+        "word": "暗記",
+        "reading": "あんき",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "血",
+    "patterns": [
+      {
+        "sentence": "足から血が出る。",
+        "word": "血",
+        "reading": "ち",
+        "okurigana": null
+      },
+      {
+        "sentence": "出血が止まる。",
+        "word": "出血",
+        "reading": "しゅっけつ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "寒",
+    "patterns": [
+      {
+        "sentence": "寒い日がつづく。",
+        "word": "寒い",
+        "reading": "さむい",
+        "okurigana": "い"
+      },
+      {
+        "sentence": "寒気が入りこむ。",
+        "word": "寒気",
+        "reading": "かんき",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "軽",
+    "patterns": [
+      {
+        "sentence": "軽いかばん。",
+        "word": "軽い",
+        "reading": "かるい",
+        "okurigana": "い"
+      },
+      {
+        "sentence": "軽食をとる。",
+        "word": "軽食",
+        "reading": "けいしょく",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "命",
+    "patterns": [
+      {
+        "sentence": "命をすくう。",
+        "word": "命",
+        "reading": "いのち",
+        "okurigana": null
+      },
+      {
+        "sentence": "生命を守る。",
+        "word": "生命",
+        "reading": "せいめい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "第",
+    "patterns": [
+      {
+        "sentence": "第三回の大会。",
+        "word": "第三回",
+        "reading": "だいさんかい",
+        "okurigana": null
+      },
+      {
+        "sentence": "第一歩をふみ出す。",
+        "word": "第一歩",
+        "reading": "だいいっぽ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "返",
+    "patterns": [
+      {
+        "sentence": "かりた本を返す。",
+        "word": "返す",
+        "reading": "かえす",
+        "okurigana": "す"
+      },
+      {
+        "sentence": "返事をする。",
+        "word": "返事",
+        "reading": "へんじ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "主",
+    "patterns": [
+      {
+        "sentence": "店の主人。",
+        "word": "主人",
+        "reading": "しゅじん",
+        "okurigana": null
+      },
+      {
+        "sentence": "主な作品。",
+        "word": "主な",
+        "reading": "おもな",
+        "okurigana": "な"
+      },
+      {
+        "sentence": "持ち主をさがす。",
+        "word": "持ち主",
+        "reading": "もちぬし",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "州",
+    "patterns": [
+      {
+        "sentence": "本州と四国。",
+        "word": "本州",
+        "reading": "ほんしゅう",
+        "okurigana": null
+      },
+      {
+        "sentence": "フロリダ州へ行く。",
+        "word": "州",
+        "reading": "しゅう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "屋",
+    "patterns": [
+      {
+        "sentence": "本屋さんに行く。",
+        "word": "本屋",
+        "reading": "ほんや",
+        "okurigana": null
+      },
+      {
+        "sentence": "ビルの屋上。",
+        "word": "屋上",
+        "reading": "おくじょう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "根",
+    "patterns": [
+      {
+        "sentence": "屋根の上。",
+        "word": "屋根",
+        "reading": "やね",
+        "okurigana": null
+      },
+      {
+        "sentence": "大根を食べる。",
+        "word": "大根",
+        "reading": "だいこん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "荷",
+    "patterns": [
+      {
+        "sentence": "大きな荷物。",
+        "word": "荷物",
+        "reading": "にもつ",
+        "okurigana": null
+      },
+      {
+        "sentence": "荷づくりをする。",
+        "word": "荷づくり",
+        "reading": "にづくり",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "守",
+    "patterns": [
+      {
+        "sentence": "きそくを守る。",
+        "word": "守る",
+        "reading": "まもる",
+        "okurigana": "る"
+      },
+      {
+        "sentence": "留守番をする。",
+        "word": "留守",
+        "reading": "るす",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "役",
+    "patterns": [
+      {
+        "sentence": "役に立つ本。",
+        "word": "役",
+        "reading": "やく",
+        "okurigana": null
+      },
+      {
+        "sentence": "役目をはたす。",
+        "word": "役目",
+        "reading": "やくめ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "豆",
+    "patterns": [
+      {
+        "sentence": "大豆をにる。",
+        "word": "大豆",
+        "reading": "だいず",
+        "okurigana": null
+      },
+      {
+        "sentence": "豆まきをする。",
+        "word": "豆まき",
+        "reading": "まめまき",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "育",
+    "patterns": [
+      {
+        "sentence": "元気に育つ。",
+        "word": "育つ",
+        "reading": "そだつ",
+        "okurigana": "つ"
+      },
+      {
+        "sentence": "親鳥がひなを育てる。",
+        "word": "育てる",
+        "reading": "そだてる",
+        "okurigana": "てる"
+      },
+      {
+        "sentence": "体育の時間。",
+        "word": "体育",
+        "reading": "たいいく",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "消",
+    "patterns": [
+      {
+        "sentence": "明かりが消える。",
+        "word": "消える",
+        "reading": "きえる",
+        "okurigana": "える"
+      },
+      {
+        "sentence": "消しゴムで消す。",
+        "word": "消す",
+        "reading": "けす",
+        "okurigana": "す"
+      },
+      {
+        "sentence": "消火車を呼ぶ。",
+        "word": "消火",
+        "reading": "しょうか",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "取",
+    "patterns": [
+      {
+        "sentence": "本を取り出す。",
+        "word": "取り",
+        "reading": "とり",
+        "okurigana": "り"
+      },
+      {
+        "sentence": "先頭を取る。",
+        "word": "取る",
+        "reading": "とる",
+        "okurigana": "る"
+      }
+    ]
+  },
+  {
+    "kanji": "期",
+    "patterns": [
+      {
+        "sentence": "新学期が始まる。",
+        "word": "学期",
+        "reading": "がっき",
+        "okurigana": null
+      },
+      {
+        "sentence": "長い期間。",
+        "word": "期間",
+        "reading": "きかん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "畑",
+    "patterns": [
+      {
+        "sentence": "花畑が広がる。",
+        "word": "花畑",
+        "reading": "はなばたけ",
+        "okurigana": null
+      },
+      {
+        "sentence": "田畑をたがやす。",
+        "word": "田畑",
+        "reading": "たはた",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "終",
+    "patterns": [
+      {
+        "sentence": "バスの終点。",
+        "word": "終点",
+        "reading": "しゅうてん",
+        "okurigana": null
+      },
+      {
+        "sentence": "夏休みが終わる。",
+        "word": "終わる",
+        "reading": "おわる",
+        "okurigana": "わる"
+      },
+      {
+        "sentence": "仕事を終える。",
+        "word": "終える",
+        "reading": "おえる",
+        "okurigana": "える"
+      }
+    ]
+  },
+  {
+    "kanji": "福",
+    "patterns": [
+      {
+        "sentence": "幸福なくらし。",
+        "word": "幸福",
+        "reading": "こうふく",
+        "okurigana": null
+      },
+      {
+        "sentence": "福ぶくろを買う。",
+        "word": "福ぶくろ",
+        "reading": "ふくぶくろ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "急",
+    "patterns": [
+      {
+        "sentence": "急いで帰る。",
+        "word": "急いで",
+        "reading": "いそいで",
+        "okurigana": "いで"
+      },
+      {
+        "sentence": "急に止まる。",
+        "word": "急に",
+        "reading": "きゅうに",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "起",
+    "patterns": [
+      {
+        "sentence": "七時に起きる。",
+        "word": "起きる",
+        "reading": "おきる",
+        "okurigana": "きる"
+      },
+      {
+        "sentence": "起立して話す。",
+        "word": "起立",
+        "reading": "きりつ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "苦",
+    "patterns": [
+      {
+        "sentence": "苦い薬。",
+        "word": "苦い",
+        "reading": "にがい",
+        "okurigana": "い"
+      },
+      {
+        "sentence": "苦心して作る。",
+        "word": "苦心",
+        "reading": "くしん",
+        "okurigana": null
+      },
+      {
+        "sentence": "苦しい練習。",
+        "word": "苦しい",
+        "reading": "くるしい",
+        "okurigana": "しい"
+      }
+    ]
+  },
+  {
+    "kanji": "待",
+    "patterns": [
+      {
+        "sentence": "兄を待つ。",
+        "word": "待つ",
+        "reading": "まつ",
+        "okurigana": "つ"
+      },
+      {
+        "sentence": "期待にこたえる。",
+        "word": "期待",
+        "reading": "きたい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "談",
+    "patterns": [
+      {
+        "sentence": "親に相談する。",
+        "word": "相談",
+        "reading": "そうだん",
+        "okurigana": null
+      },
+      {
+        "sentence": "先生と面談する。",
+        "word": "面談",
+        "reading": "めんだん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "鼻",
+    "patterns": [
+      {
+        "sentence": "ぞうの鼻。",
+        "word": "鼻",
+        "reading": "はな",
+        "okurigana": null
+      },
+      {
+        "sentence": "鼻歌をうたう。",
+        "word": "鼻歌",
+        "reading": "はなうた",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "歯",
+    "patterns": [
+      {
+        "sentence": "歯をみがく。",
+        "word": "歯",
+        "reading": "は",
+        "okurigana": null
+      },
+      {
+        "sentence": "歯科医になる。",
+        "word": "歯科",
+        "reading": "しか",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "央",
+    "patterns": [
+      {
+        "sentence": "広場の中央。",
+        "word": "中央",
+        "reading": "ちゅうおう",
+        "okurigana": null
+      },
+      {
+        "sentence": "中央公園へ行く。",
+        "word": "中央",
+        "reading": "ちゅうおう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "階",
+    "patterns": [
+      {
+        "sentence": "二階のへや。",
+        "word": "二階",
+        "reading": "にかい",
+        "okurigana": null
+      },
+      {
+        "sentence": "階段を上る。",
+        "word": "階段",
+        "reading": "かいだん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "委",
+    "patterns": [
+      {
+        "sentence": "図書委員になる。",
+        "word": "委員",
+        "reading": "いいん",
+        "okurigana": null
+      },
+      {
+        "sentence": "決定を委ねる。",
+        "word": "委ねる",
+        "reading": "ゆだねる",
+        "okurigana": "ねる"
+      }
+    ]
+  },
+  {
+    "kanji": "級",
+    "patterns": [
+      {
+        "sentence": "上級生と話す。",
+        "word": "上級",
+        "reading": "じょうきゅう",
+        "okurigana": null
+      },
+      {
+        "sentence": "学級会を開く。",
+        "word": "学級",
+        "reading": "がっきゅう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "昭",
+    "patterns": [
+      {
+        "sentence": "昭和の生まれ。",
+        "word": "昭和",
+        "reading": "しょうわ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "和",
+    "patterns": [
+      {
+        "sentence": "和食を食べる。",
+        "word": "和食",
+        "reading": "わしょく",
+        "okurigana": null
+      },
+      {
+        "sentence": "和室に入る。",
+        "word": "和室",
+        "reading": "わしつ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "駅",
+    "patterns": [
+      {
+        "sentence": "駅まで歩く。",
+        "word": "駅",
+        "reading": "えき",
+        "okurigana": null
+      },
+      {
+        "sentence": "駅前の広場。",
+        "word": "駅前",
+        "reading": "えきまえ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "皮",
+    "patterns": [
+      {
+        "sentence": "みかんの皮。",
+        "word": "皮",
+        "reading": "かわ",
+        "okurigana": null
+      },
+      {
+        "sentence": "動物の皮ふ。",
+        "word": "皮ふ",
+        "reading": "ひふ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "皿",
+    "patterns": [
+      {
+        "sentence": "皿をならべる。",
+        "word": "皿",
+        "reading": "さら",
+        "okurigana": null
+      },
+      {
+        "sentence": "大皿にもる。",
+        "word": "大皿",
+        "reading": "おおざら",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "短",
+    "patterns": [
+      {
+        "sentence": "短いロープ。",
+        "word": "短い",
+        "reading": "みじかい",
+        "okurigana": "い"
+      },
+      {
+        "sentence": "短文を作る。",
+        "word": "短文",
+        "reading": "たんぶん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "息",
+    "patterns": [
+      {
+        "sentence": "息をする。",
+        "word": "息",
+        "reading": "いき",
+        "okurigana": null
+      },
+      {
+        "sentence": "休息をとる。",
+        "word": "休息",
+        "reading": "きゅうそく",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "美",
+    "patterns": [
+      {
+        "sentence": "美しいけしき。",
+        "word": "美しい",
+        "reading": "うつくしい",
+        "okurigana": "しい"
+      },
+      {
+        "sentence": "美じゅつ館に行く。",
+        "word": "美じゅつ",
+        "reading": "びじゅつ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "転",
+    "patterns": [
+      {
+        "sentence": "坂道で転ぶ。",
+        "word": "転ぶ",
+        "reading": "ころぶ",
+        "okurigana": "ぶ"
+      },
+      {
+        "sentence": "自転車に乗る。",
+        "word": "自転車",
+        "reading": "じてんしゃ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "病",
+    "patterns": [
+      {
+        "sentence": "病気がなおる。",
+        "word": "病気",
+        "reading": "びょうき",
+        "okurigana": null
+      },
+      {
+        "sentence": "病とたたかう。",
+        "word": "病",
+        "reading": "やまい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "医",
+    "patterns": [
+      {
+        "sentence": "医者になる。",
+        "word": "医者",
+        "reading": "いしゃ",
+        "okurigana": null
+      },
+      {
+        "sentence": "医学を学ぶ。",
+        "word": "医学",
+        "reading": "いがく",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "飲",
+    "patterns": [
+      {
+        "sentence": "ジュースを飲む。",
+        "word": "飲む",
+        "reading": "のむ",
+        "okurigana": "む"
+      },
+      {
+        "sentence": "飲食店に入る。",
+        "word": "飲食",
+        "reading": "いんしょく",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "重",
+    "patterns": [
+      {
+        "sentence": "体重をはかる。",
+        "word": "体重",
+        "reading": "たいじゅう",
+        "okurigana": null
+      },
+      {
+        "sentence": "重い石を持つ。",
+        "word": "重い",
+        "reading": "おもい",
+        "okurigana": "い"
+      },
+      {
+        "sentence": "本を重ねる。",
+        "word": "重ねる",
+        "reading": "かさねる",
+        "okurigana": "ねる"
+      }
+    ]
+  },
+  {
+    "kanji": "配",
+    "patterns": [
+      {
+        "sentence": "プリントを配る。",
+        "word": "配る",
+        "reading": "くばる",
+        "okurigana": "る"
+      },
+      {
+        "sentence": "けがを心配する。",
+        "word": "心配",
+        "reading": "しんぱい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "度",
+    "patterns": [
+      {
+        "sentence": "何度も読む。",
+        "word": "度",
+        "reading": "ど",
+        "okurigana": null
+      },
+      {
+        "sentence": "一度だけ言う。",
+        "word": "一度",
+        "reading": "いちど",
+        "okurigana": null
+      },
+      {
+        "sentence": "温度をはかる。",
+        "word": "温度",
+        "reading": "おんど",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "幸",
+    "patterns": [
+      {
+        "sentence": "幸せな一日。",
+        "word": "幸せ",
+        "reading": "しあわせ",
+        "okurigana": "せ"
+      },
+      {
+        "sentence": "幸運をいのる。",
+        "word": "幸運",
+        "reading": "こううん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "流",
+    "patterns": [
+      {
+        "sentence": "川が流れる。",
+        "word": "流れる",
+        "reading": "ながれる",
+        "okurigana": "れる"
+      },
+      {
+        "sentence": "川の上流。",
+        "word": "上流",
+        "reading": "じょうりゅう",
+        "okurigana": null
+      },
+      {
+        "sentence": "水を流す。",
+        "word": "流す",
+        "reading": "ながす",
+        "okurigana": "す"
+      }
+    ]
+  },
+  {
+    "kanji": "族",
+    "patterns": [
+      {
+        "sentence": "家族で出かける。",
+        "word": "家族",
+        "reading": "かぞく",
+        "okurigana": null
+      },
+      {
+        "sentence": "水族館に行く。",
+        "word": "水族館",
+        "reading": "すいぞくかん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "帳",
+    "patterns": [
+      {
+        "sentence": "日記帳を買う。",
+        "word": "日記帳",
+        "reading": "にっきちょう",
+        "okurigana": null
+      },
+      {
+        "sentence": "メモ帳に書く。",
+        "word": "メモ帳",
+        "reading": "めもちょう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "代",
+    "patterns": [
+      {
+        "sentence": "千代紙を買う。",
+        "word": "千代紙",
+        "reading": "ちよがみ",
+        "okurigana": null
+      },
+      {
+        "sentence": "交代で番をする。",
+        "word": "交代",
+        "reading": "こうたい",
+        "okurigana": null
+      },
+      {
+        "sentence": "代表になる。",
+        "word": "代表",
+        "reading": "だいひょう",
+        "okurigana": null
+      },
+      {
+        "sentence": "品物を代える。",
+        "word": "代える",
+        "reading": "かえる",
+        "okurigana": "える"
+      }
+    ]
+  },
+  {
+    "kanji": "曲",
+    "patterns": [
+      {
+        "sentence": "思い出の曲。",
+        "word": "曲",
+        "reading": "きょく",
+        "okurigana": null
+      },
+      {
+        "sentence": "左に曲がる。",
+        "word": "曲がる",
+        "reading": "まがる",
+        "okurigana": "がる"
+      }
+    ]
+  },
+  {
+    "kanji": "投",
+    "patterns": [
+      {
+        "sentence": "ボールを投げる。",
+        "word": "投げる",
+        "reading": "なげる",
+        "okurigana": "げる"
+      },
+      {
+        "sentence": "新聞に投書する。",
+        "word": "投書",
+        "reading": "とうしょ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "炭",
+    "patterns": [
+      {
+        "sentence": "石炭をほる。",
+        "word": "石炭",
+        "reading": "せきたん",
+        "okurigana": null
+      },
+      {
+        "sentence": "魚を炭火でやく。",
+        "word": "炭火",
+        "reading": "すみび",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "羊",
+    "patterns": [
+      {
+        "sentence": "羊毛のセーター。",
+        "word": "羊毛",
+        "reading": "ようもう",
+        "okurigana": null
+      },
+      {
+        "sentence": "羊の群れ。",
+        "word": "羊",
+        "reading": "ひつじ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "宿",
+    "patterns": [
+      {
+        "sentence": "旅の宿。",
+        "word": "宿",
+        "reading": "やど",
+        "okurigana": null
+      },
+      {
+        "sentence": "算数の宿題。",
+        "word": "宿題",
+        "reading": "しゅくだい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "丁",
+    "patterns": [
+      {
+        "sentence": "とうふを一丁買う。",
+        "word": "一丁",
+        "reading": "いっちょう",
+        "okurigana": null
+      },
+      {
+        "sentence": "三丁目の家。",
+        "word": "丁目",
+        "reading": "ちょうめ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "宮",
+    "patterns": [
+      {
+        "sentence": "お宮の参道。",
+        "word": "宮",
+        "reading": "みや",
+        "okurigana": null
+      },
+      {
+        "sentence": "広い宮でん。",
+        "word": "宮でん",
+        "reading": "きゅうでん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "院",
+    "patterns": [
+      {
+        "sentence": "病院に入る。",
+        "word": "病院",
+        "reading": "びょういん",
+        "okurigana": null
+      },
+      {
+        "sentence": "けがで通院する。",
+        "word": "通院",
+        "reading": "つういん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "礼",
+    "patterns": [
+      {
+        "sentence": "お礼を言う。",
+        "word": "礼",
+        "reading": "れい",
+        "okurigana": null
+      },
+      {
+        "sentence": "礼ぎ正しい人。",
+        "word": "礼ぎ",
+        "reading": "れいぎ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "等",
+    "patterns": [
+      {
+        "sentence": "上等な服を着る。",
+        "word": "上等",
+        "reading": "じょうとう",
+        "okurigana": null
+      },
+      {
+        "sentence": "等しい長さ。",
+        "word": "等しい",
+        "reading": "ひとしい",
+        "okurigana": "しい"
+      }
+    ]
+  },
+  {
+    "kanji": "反",
+    "patterns": [
+      {
+        "sentence": "反対の意見を言う。",
+        "word": "反対",
+        "reading": "はんたい",
+        "okurigana": null
+      },
+      {
+        "sentence": "むねを反らす。",
+        "word": "反らす",
+        "reading": "そらす",
+        "okurigana": "らす"
+      }
+    ]
+  },
+  {
+    "kanji": "君",
+    "patterns": [
+      {
+        "sentence": "山田君と遊ぶ。",
+        "word": "君",
+        "reading": "くん",
+        "okurigana": null
+      },
+      {
+        "sentence": "君とぼく。",
+        "word": "君",
+        "reading": "きみ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "乗",
+    "patterns": [
+      {
+        "sentence": "電車に乗る。",
+        "word": "乗る",
+        "reading": "のる",
+        "okurigana": "る"
+      },
+      {
+        "sentence": "バスに乗車する。",
+        "word": "乗車",
+        "reading": "じょうしゃ",
+        "okurigana": null
+      },
+      {
+        "sentence": "人を乗せる。",
+        "word": "乗せる",
+        "reading": "のせる",
+        "okurigana": "せる"
+      }
+    ]
+  },
+  {
+    "kanji": "庭",
+    "patterns": [
+      {
+        "sentence": "校庭に出る。",
+        "word": "校庭",
+        "reading": "こうてい",
+        "okurigana": null
+      },
+      {
+        "sentence": "庭に花をうえる。",
+        "word": "庭",
+        "reading": "にわ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "研",
+    "patterns": [
+      {
+        "sentence": "研究を受ける。",
+        "word": "研究",
+        "reading": "けんきゅう",
+        "okurigana": null
+      },
+      {
+        "sentence": "はを研ぐ。",
+        "word": "研ぐ",
+        "reading": "とぐ",
+        "okurigana": "ぐ"
+      }
+    ]
+  },
+  {
+    "kanji": "究",
+    "patterns": [
+      {
+        "sentence": "魚の研究をする。",
+        "word": "研究",
+        "reading": "けんきゅう",
+        "okurigana": null
+      },
+      {
+        "sentence": "原因を究明する。",
+        "word": "究明",
+        "reading": "きゅうめい",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "打",
+    "patterns": [
+      {
+        "sentence": "くぎを打つ。",
+        "word": "打つ",
+        "reading": "うつ",
+        "okurigana": "つ"
+      },
+      {
+        "sentence": "打球がとぶ。",
+        "word": "打球",
+        "reading": "だきゅう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "受",
+    "patterns": [
+      {
+        "sentence": "プレゼントを受ける。",
+        "word": "受ける",
+        "reading": "うける",
+        "okurigana": "ける"
+      },
+      {
+        "sentence": "文書を受理する。",
+        "word": "受理",
+        "reading": "じゅり",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "島",
+    "patterns": [
+      {
+        "sentence": "南の島へ行く。",
+        "word": "島",
+        "reading": "しま",
+        "okurigana": null
+      },
+      {
+        "sentence": "小さな半島。",
+        "word": "半島",
+        "reading": "はんとう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "追",
+    "patterns": [
+      {
+        "sentence": "兄の後を追う。",
+        "word": "追う",
+        "reading": "おう",
+        "okurigana": "う"
+      },
+      {
+        "sentence": "真理を追究する。",
+        "word": "追究",
+        "reading": "ついきゅう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "実",
+    "patterns": [
+      {
+        "sentence": "りんごの実。",
+        "word": "実",
+        "reading": "み",
+        "okurigana": null
+      },
+      {
+        "sentence": "実力をつける。",
+        "word": "実力",
+        "reading": "じつりょく",
+        "okurigana": null
+      },
+      {
+        "sentence": "夢が実る。",
+        "word": "実る",
+        "reading": "みのる",
+        "okurigana": "る"
+      }
+    ]
+  },
+  {
+    "kanji": "神",
+    "patterns": [
+      {
+        "sentence": "神様にいのる。",
+        "word": "神様",
+        "reading": "かみさま",
+        "okurigana": null
+      },
+      {
+        "sentence": "古い神社。",
+        "word": "神社",
+        "reading": "じんじゃ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "箱",
+    "patterns": [
+      {
+        "sentence": "新しい筆箱。",
+        "word": "筆箱",
+        "reading": "ふでばこ",
+        "okurigana": null
+      },
+      {
+        "sentence": "箱の中にしまう。",
+        "word": "箱",
+        "reading": "はこ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "湯",
+    "patterns": [
+      {
+        "sentence": "湯をわかす。",
+        "word": "湯",
+        "reading": "ゆ",
+        "okurigana": null
+      },
+      {
+        "sentence": "せん湯に行く。",
+        "word": "湯",
+        "reading": "とう",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "他",
+    "patterns": [
+      {
+        "sentence": "他人の意見。",
+        "word": "他人",
+        "reading": "たにん",
+        "okurigana": null
+      },
+      {
+        "sentence": "他のものを買う。",
+        "word": "他",
+        "reading": "ほか",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "身",
+    "patterns": [
+      {
+        "sentence": "身長をはかる。",
+        "word": "身長",
+        "reading": "しんちょう",
+        "okurigana": null
+      },
+      {
+        "sentence": "身の回りのもの。",
+        "word": "身",
+        "reading": "み",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "持",
+    "patterns": [
+      {
+        "sentence": "荷物を持つ。",
+        "word": "持つ",
+        "reading": "もつ",
+        "okurigana": "つ"
+      },
+      {
+        "sentence": "気持ちをつたえる。",
+        "word": "気持ち",
+        "reading": "きもち",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "登",
+    "patterns": [
+      {
+        "sentence": "山に登る。",
+        "word": "登る",
+        "reading": "のぼる",
+        "okurigana": "る"
+      },
+      {
+        "sentence": "登山する。",
+        "word": "登山",
+        "reading": "とざん",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "物",
+    "patterns": [
+      {
+        "sentence": "忘れ物をする。",
+        "word": "物",
+        "reading": "もの",
+        "okurigana": null
+      },
+      {
+        "sentence": "植物を育てる。",
+        "word": "植物",
+        "reading": "しょくぶつ",
+        "okurigana": null
+      }
+    ]
+  },
+  {
+    "kanji": "旅",
+    "patterns": [
+      {
+        "sentence": "旅行に出かける。",
+        "word": "旅行",
+        "reading": "りょこう",
+        "okurigana": null
+      },
+      {
+        "sentence": "長い旅に出る。",
+        "word": "旅",
+        "reading": "たび",
+        "okurigana": null
+      }
+    ]
+  }
+];
