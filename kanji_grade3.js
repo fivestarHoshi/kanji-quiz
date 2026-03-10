@@ -2328,9 +2328,9 @@ const KANJI_DATA = [
         "okurigana": "る"
       },
       {
-        "sentence": "留守番をする。",
-        "word": "留守",
-        "reading": "るす",
+        "sentence": "る守番をする。",
+        "word": "守",
+        "reading": "す",
         "okurigana": null
       }
     ]
