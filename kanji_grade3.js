@@ -89,7 +89,7 @@ const KANJI_DATA = [
         "okurigana": "める"
       },
       {
-        "sentence": "授業が始まる。",
+        "sentence": "じゅ業が始まる。",
         "word": "始まる",
         "reading": "はじまる",
         "okurigana": "まる"
@@ -823,7 +823,7 @@ const KANJI_DATA = [
         "okurigana": null
       },
       {
-        "sentence": "表と裏。",
+        "sentence": "表とうら。",
         "word": "表",
         "reading": "おもて",
         "okurigana": null
@@ -857,8 +857,8 @@ const KANJI_DATA = [
         "okurigana": null
       },
       {
-        "sentence": "二十世紀。",
-        "word": "世紀",
+        "sentence": "二十世き。",
+        "word": "世き",
         "reading": "せいき",
         "okurigana": null
       }
@@ -1487,10 +1487,16 @@ const KANJI_DATA = [
         "okurigana": null
       },
       {
-        "sentence": "過去の町を見る。",
-        "word": "過去",
-        "reading": "かこ",
+        "sentence": "か去のこと。",
+        "word": "去",
+        "reading": "こ",
         "okurigana": null
+      },
+      {
+        "sentence": "町を去る。",
+        "word": "去る",
+        "reading": "さる",
+        "okurigana": "る"
       }
     ]
   },
@@ -1698,8 +1704,8 @@ const KANJI_DATA = [
         "okurigana": "る"
       },
       {
-        "sentence": "関係をたもつ。",
-        "word": "関係",
+        "sentence": "かん係をたもつ。",
+        "word": "かん係",
         "reading": "かんけい",
         "okurigana": null
       }
@@ -1919,7 +1925,7 @@ const KANJI_DATA = [
     "kanji": "勝",
     "patterns": [
       {
-        "sentence": "試合に勝つ。",
+        "sentence": "し合に勝つ。",
         "word": "勝つ",
         "reading": "かつ",
         "okurigana": "つ"
@@ -2408,7 +2414,7 @@ const KANJI_DATA = [
         "okurigana": "す"
       },
       {
-        "sentence": "消火車を呼ぶ。",
+        "sentence": "消火車をよぶ。",
         "word": "消火",
         "reading": "しょうか",
         "okurigana": null
@@ -2658,8 +2664,8 @@ const KANJI_DATA = [
         "okurigana": null
       },
       {
-        "sentence": "階段を上る。",
-        "word": "階段",
+        "sentence": "階だんを上る。",
+        "word": "階だん",
         "reading": "かいだん",
         "okurigana": null
       }
@@ -3124,7 +3130,7 @@ const KANJI_DATA = [
         "okurigana": null
       },
       {
-        "sentence": "羊の群れ。",
+        "sentence": "羊のむれ。",
         "word": "羊",
         "reading": "ひつじ",
         "okurigana": null
@@ -3169,7 +3175,7 @@ const KANJI_DATA = [
     "kanji": "宮",
     "patterns": [
       {
-        "sentence": "お宮の参道。",
+        "sentence": "お宮のさん道。",
         "word": "宮",
         "reading": "みや",
         "okurigana": null
@@ -3334,7 +3340,7 @@ const KANJI_DATA = [
         "okurigana": null
       },
       {
-        "sentence": "原因を究明する。",
+        "sentence": "げんいんを究明する。",
         "word": "究明",
         "reading": "きゅうめい",
         "okurigana": null
@@ -3425,7 +3431,7 @@ const KANJI_DATA = [
         "okurigana": null
       },
       {
-        "sentence": "夢が実る。",
+        "sentence": "ゆめが実る。",
         "word": "実る",
         "reading": "みのる",
         "okurigana": "る"
@@ -3555,7 +3561,7 @@ const KANJI_DATA = [
     "kanji": "物",
     "patterns": [
       {
-        "sentence": "忘れ物をする。",
+        "sentence": "わすれ物をする。",
         "word": "物",
         "reading": "もの",
         "okurigana": null
