@@ -1545,8 +1545,8 @@ const KANJI_DATA = [
       },
       {
         "sentence": "銀メダルをとる。",
-        "word": "銀メダル",
-        "reading": "ぎんめだる",
+        "word": "銀",
+        "reading": "ぎん",
         "okurigana": null
       }
     ]
@@ -3028,8 +3028,8 @@ const KANJI_DATA = [
       },
       {
         "sentence": "メモ帳に書く。",
-        "word": "メモ帳",
-        "reading": "めもちょう",
+        "word": "帳",
+        "reading": "ちょう",
         "okurigana": null
       }
     ]

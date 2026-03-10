@@ -613,7 +613,7 @@
     "kanji": "銀",
     "patterns": [
       { "sentence": "銀行へ行く。", "word": "銀行", "reading": "ぎんこう", "okurigana": null },
-      { "sentence": "銀メダルをとる。", "word": "銀メダル", "reading": "ぎんめだる", "okurigana": null }
+      { "sentence": "銀メダルをとる。", "word": "銀", "reading": "ぎん", "okurigana": null }
     ]
   },
   {
@@ -1206,7 +1206,7 @@
     "kanji": "帳",
     "patterns": [
       { "sentence": "日記帳を買う。", "word": "日記帳", "reading": "にっきちょう", "okurigana": null },
-      { "sentence": "メモ帳に書く。", "word": "メモ帳", "reading": "めもちょう", "okurigana": null }
+      { "sentence": "メモ帳に書く。", "word": "帳", "reading": "ちょう", "okurigana": null }
     ]
   },
   {
